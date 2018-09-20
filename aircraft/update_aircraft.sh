@@ -1,15 +1,18 @@
 #!/bin/bash
 
 echo -n "HTTP Proxy: "; read proxy
-echo -n "Port: "; read port
-proxy="http://$proxy:$port"
-echo -n "username: "; read username
-if [[ $username != "" ]]; then
-	echo -n "password: "
-	read -s password
-	echo
-	username=$username
-	password=$password
+if ! [ -z $proxy ]; then
+
+	echo -n "Port: "; read port
+	proxy="http://$proxy:$port"
+	echo -n "username: "; read username
+	if [[ $username != "" ]]; then
+		echo -n "password: "
+		read -s password
+		echo
+		username=$username
+		password=$password
+	fi
 fi
 
 echo $proxy
