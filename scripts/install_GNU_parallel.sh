@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DEBIAN_FRONTEND=noninteractive
+#export DEBIAN_FRONTEND=noninteractive
 
 pwd
 #######################
@@ -16,4 +16,4 @@ parallel --version #check if parallel has been installed
 yes 'will cite' | parallel --citation
 cd ../
 
-unset DEBIAN_FRONTEND=noninteractive
+#unset DEBIAN_FRONTEND=noninteractive

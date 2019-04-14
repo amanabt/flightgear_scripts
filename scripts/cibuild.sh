@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DEBIAN_FRONTEND=noninteractive
+#export DEBIAN_FRONTEND=noninteractive
 
 ls -al /usr/share/games/flightgear/
 
@@ -11,4 +11,4 @@ yes '' | ./scripts/run_install.sh
 ./scripts/install_GNU_parallel.sh
 yes '' | ./scripts/run_install.sh
 
-unset DEBIAN_FRONTEND=noninteractive
+#unset DEBIAN_FRONTEND=noninteractive

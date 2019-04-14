@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DEBIAN_FRONTEND=noninteractive
+#export DEBIAN_FRONTEND=noninteractive
 
 
 ##############################
@@ -27,4 +27,4 @@ rm -rfv scenes/*zip
 
 
 
-unset DEBIAN_FRONTEND=noninteractive
+#unset DEBIAN_FRONTEND=noninteractive
