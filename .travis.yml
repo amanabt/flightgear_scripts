@@ -8,7 +8,7 @@ addons:
   apt:
     update: true
 
-script: "yes '' | ./scripts/cibuild.sh"
+script: "./scripts/cibuild.sh"
 
 notifications:
   email: false
