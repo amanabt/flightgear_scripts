@@ -1,6 +1,9 @@
 dist: xenial
 language: bash
 
+before_install:
+  - sudo apt-get install -y flightgear
+
 addons:
   apt:
     update: true

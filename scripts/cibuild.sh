@@ -39,6 +39,7 @@ cd parallel-latest
 ./configure && make
 sudo make install
 parallel --version #check if parallel has been installed
+parallel --citation
 cd ../
 
 ##############################
