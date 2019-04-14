@@ -39,7 +39,7 @@ cd parallel-latest
 ./configure && make
 sudo make install
 parallel --version #check if parallel has been installed
-parallel --citation
+yes 'will cite' | parallel --citation
 cd ../
 
 ##############################
@@ -49,12 +49,15 @@ pwd
 cd aircraft
 ./update_aircraft.sh
 ./extract.sh
-
+ls -al
 cd ..
+
 pwd
+
 cd scenes
 ./update_scenery.sh
 ./extract.sh
+ls -al
 cd ..
 pwd
 #######################
