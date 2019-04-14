@@ -10,14 +10,14 @@ for dir in */ ; do
 	if [ -d "$directory/Objects" ]; then
 		cd $directory/Objects
 		pwd
-		rsync -rah . /usr/share/games/flightgear/Scenery/Objects/
+		sudo rsync -rah . /usr/share/games/flightgear/Scenery/Objects/
 		cd ../../
 	fi
 
 	if [ -d "$directory/Terrain" ]; then
 		cd $directory/Terrain
 		pwd
-		rsync -rah . /usr/share/games/flightgear/Scenery/Terrain
+		sudo rsync -rah . /usr/share/games/flightgear/Scenery/Terrain
 		cd ../../
 	fi
 done

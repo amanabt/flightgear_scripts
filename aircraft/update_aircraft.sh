@@ -1,28 +1,46 @@
 #!/bin/bash
 
-echo -n "HTTP Proxy: "; read proxy
+source "../scripts/progress_bar.sh"
+
+echo -n "HTTP Proxy(Press Enter for no proxy): "; read proxy
 if ! [ -z $proxy ]; then
 
-	echo -n "Port: "; read port
-	proxy="http://$proxy:$port"
-	echo -n "username: "; read username
-	if [[ $username != "" ]]; then
-		echo -n "password: "
-		read -s password
-		echo
-		username=$username
-		password=$password
-	fi
+        echo -n "Port: "; read port
+        proxy="http://$proxy:$port"
+        echo -n "Username: "; read username
+        if [[ $username != "" ]]; then
+                echo -n "Password (Note: script breaks with passwords with special characters): "
+                read -rs password
+                echo
+                username=$username
+                password=$password
+        fi
 fi
 
-echo $proxy
+STR="$(whereis parallel)"
+echo $STR
+IFS=':' read -ra NAMES <<< "$STR"    #Convert string to array
 
-while read aircraft_name; do
-	echo "$aircraft_name"
-	if ! [ -z $aircraft_name ]; then
-		wget -N --proxy-user=$username --proxy-passwd=$password \
-			-e use_proxy=on -e http_proxy=$proxy \
-			http://mirrors.ibiblio.org/flightgear/ftp/Aircraft/$aircraft_name
-	fi
-done <aircraft_list.txt
+
+STR="$(wc -l aircraft_list.txt)"
+echo $STR
+IFS=' ' read -ra TOTAL_AIRCRAFTS <<< "$STR"    #Convert string to array
+i=0
+
+if [ -z "${NAMES[1]}" ]; then
+    echo "GNU Parallel not found!"
+    while read aircraft_name; do
+            i=$((i + 1))
+            ProgressBar ${i} ${TOTAL_AIRCRAFTS} ${aircraft_name}
+            if ! [ -z $aircraft_name ]; then
+                    wget --quiet -N --proxy-user="$username" --proxy-passwd="$password" \
+                            -e use_proxy=on -e http_proxy="$proxy" \
+                            http://ns334561.ip-5-196-65.eu/~fgscenery/WS2.0/$aircraft_name
+            fi
+    done <aircraft_list.txt
+else
+    echo "Using GNU Parallel (Note: script breaks with passwords with special characters)"
+    cat aircraft_list.txt | parallel --bar -n 1 -I {} -j 8 " wget --quiet -N --proxy-user="$username" --proxy-passwd="$password" -e use_proxy=on -e http_proxy="$proxy" http://mirrors.ibiblio.org/flightgear/ftp/Aircraft/"{}""
+
+fi
 
