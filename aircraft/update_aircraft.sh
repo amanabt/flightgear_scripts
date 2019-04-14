@@ -1,6 +1,10 @@
 #!/bin/bash
 
 source "../scripts/progress_bar.sh"
+source "../scripts/text_formatting.sh"
+
+printf "${BRed}Updating packages from FlightGear Aircraft list\n"
+printf "${Color_Off}See: http://mirrors.ibiblio.org/flightgear/ftp/Aircraft/\n"
 
 echo -n "HTTP Proxy(Press Enter for no proxy): "; read proxy
 if ! [ -z $proxy ]; then
@@ -30,13 +34,13 @@ i=0
 if [ -z "${IS_PARALLEL[1]}" ]; then
     echo "GNU Parallel not found!"
     while read aircraft_name; do
-            i=$((i + 1))
-            ProgressBar ${i} ${TOTAL_AIRCRAFTS} ${aircraft_name}
             if ! [ -z $aircraft_name ]; then
                     wget --quiet -N --proxy-user="$username" --proxy-passwd="$password" \
                             -e use_proxy=on -e http_proxy="$proxy" \
-                            http://ns334561.ip-5-196-65.eu/~fgscenery/WS2.0/$aircraft_name
+                            http://mirrors.ibiblio.org/flightgear/ftp/Aircraft/$aircraft_name
             fi
+            i=$((i + 1))
+            ProgressBar ${i} ${TOTAL_AIRCRAFTS} ${aircraft_name}
     done <aircraft_list.txt
 else
     echo "Using GNU Parallel (Note: script breaks with passwords with special characters)"

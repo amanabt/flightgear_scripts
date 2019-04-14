@@ -1,6 +1,10 @@
 #!/bin/bash
 
 source "../scripts/progress_bar.sh"
+source "../scripts/text_formatting.sh"
+
+printf "${BRed}Updating packages from FlightGear scenery list\n"
+printf "${Color_Off}See: http://ns334561.ip-5-196-65.eu/~fgscenery/WS2.0\n"
 
 echo -n "HTTP Proxy(Press Enter for no proxy): "; read proxy
 if ! [ -z $proxy ]; then
@@ -17,23 +21,23 @@ if ! [ -z $proxy ]; then
         fi
 fi
 
-STR="$(whereis parallel)"
+STR="$(whereis paralle)" # For checking if GNU Parallel is present
 IFS=':' read -ra IS_PARALLEL <<< "$STR"    #Convert string to array
 
-STR="$(wc -l scenery_list.txt)"
+STR="$(wc -l scenery_list.txt)" # Counts the number of scenery
 IFS=' ' read -ra TOTAL_SCENERY <<< "$STR"    #Convert string to array
 i=0
 
 if [ -z "${IS_PARALLEL[1]}" ]; then
     echo "GNU Parallel not found!"
     while read scenery_name; do
-            i=$((i + 1))
-            ProgressBar ${i} ${TOTAL_SCENERY} ${scenery_name}
             if ! [ -z $scenery_name ]; then
                     wget --quiet -N --proxy-user="$username" --proxy-passwd="$password" \
                             -e use_proxy=on -e http_proxy="$proxy" \
                             http://ns334561.ip-5-196-65.eu/~fgscenery/WS2.0/$scenery_name
             fi
+            i=$((i + 1))
+            ProgressBar ${i} ${TOTAL_SCENERY} ${scenery_name}
     done <scenery_list.txt
 
 else
