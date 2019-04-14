@@ -8,15 +8,17 @@
 ##############################
 pwd
 cd aircraft
-./update_aircraft.sh
-./extract.sh
+./install_aircrafts.sh
+#./update_aircraft.sh
+#./extract.sh
 ./clean.sh
 
 cd ..
 pwd
 cd scenes
-./update_scenery.sh
-./extract.sh
+./install_scenary.sh
+#./update_scenery.sh
+#./extract.sh
 ./clean.sh
 cd ..
 pwd
