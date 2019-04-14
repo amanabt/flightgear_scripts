@@ -7,13 +7,15 @@ export DEBIAN_FRONTEND=noninteractive
 ##############################
 pwd
 cd aircraft
-./install_aircrafts.sh
+./update_aircraft.sh
+./extract.sh
 ./clean.sh
 
 cd ..
 pwd
 cd scenes
-./install_scenary.sh
+./update_scenery.sh
+./extract.sh
 ./clean.sh
 cd ..
 pwd
@@ -44,11 +46,14 @@ cd ../
 ##############################
 pwd
 cd aircraft
-./install_aircrafts.sh
+./update_aircraft.sh
+./extract.sh
+
 cd ..
 pwd
 cd scenes
-./install_scenary.sh
+./update_scenery.sh
+./extract.sh
 cd ..
 pwd
 #######################
