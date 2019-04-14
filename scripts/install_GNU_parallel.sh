@@ -13,7 +13,6 @@ cd parallel-latest
 ./configure && make
 sudo make install
 parallel --version #check if parallel has been installed
-yes 'will cite' | parallel --citation
 cd ../
 
 #unset DEBIAN_FRONTEND=noninteractive
