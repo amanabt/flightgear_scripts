@@ -8,7 +8,7 @@ pwd
 #######################
 
 wget https://ftp.gnu.org/gnu/parallel/parallel-latest.tar.bz2
-tar jxf parallel-latest.tar.bz2 --one-top-level=parallel-latest --strip- components=1
+tar jxf parallel-latest.tar.bz2 --one-top-level=parallel-latest --strip-components=1
 cd parallel-latest
 ./configure && make
 sudo make install
