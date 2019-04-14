@@ -18,13 +18,13 @@ if ! [ -z $proxy ]; then
 fi
 
 STR="$(whereis parallel)"
-IFS=':' read -ra NAMES <<< "$STR"    #Convert string to array
+IFS=':' read -ra IS_PARALLEL <<< "$STR"    #Convert string to array
 
 STR="$(wc -l scenery_list.txt)"
 IFS=' ' read -ra TOTAL_SCENERY <<< "$STR"    #Convert string to array
 i=0
 
-if [ -z "${NAMES[1]}" ]; then
+if [ -z "${IS_PARALLEL[1]}" ]; then
     echo "GNU Parallel not found!"
     while read scenery_name; do
             i=$((i + 1))

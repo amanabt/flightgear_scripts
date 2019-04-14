@@ -19,7 +19,7 @@ fi
 
 STR="$(whereis parallel)"
 echo $STR
-IFS=':' read -ra NAMES <<< "$STR"    #Convert string to array
+IFS=':' read -ra IS_PARALLEL <<< "$STR"    #Convert string to array
 
 
 STR="$(wc -l aircraft_list.txt)"
@@ -27,7 +27,7 @@ echo $STR
 IFS=' ' read -ra TOTAL_AIRCRAFTS <<< "$STR"    #Convert string to array
 i=0
 
-if [ -z "${NAMES[1]}" ]; then
+if [ -z "${IS_PARALLEL[1]}" ]; then
     echo "GNU Parallel not found!"
     while read aircraft_name; do
             i=$((i + 1))
