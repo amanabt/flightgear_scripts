@@ -1,0 +1,11 @@
+dist: xenial
+language: bash
+
+addons:
+  apt:
+    update: true
+
+script: "./scripts/cibuild.sh"
+
+notifications:
+  email: false
