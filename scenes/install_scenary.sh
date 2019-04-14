@@ -10,7 +10,7 @@ source "../scripts/text_formatting.sh"
 printf "${BRed}Installing packages\n${Color_Off}"
 
 STR="$(wc -l scenery_list.txt)"
-echo $STR
+#echo $STR
 IFS=' ' read -ra TOTAL_SCENERY <<< "$STR"    #Convert string to array
 i=0
 
