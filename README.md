@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/amanabt/flightgear_scripts.svg?branch=master)](https://travis-ci.org/amanabt/flightgear_scripts)
+
 # Flightgear Aircrafts and Scenery installer
 Bash scripts for installing a list of Aircrafts and Sceneries
 
