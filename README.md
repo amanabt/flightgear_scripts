@@ -47,14 +47,25 @@ tried to automate this process of installing Aircrafts and Sceneries.
   shown in this FlightGear GUI interface
   [scenery downloader](http://ns334561.ip-5-196-65.eu/~fgscenery/WS2.0/scenery-2.0.1.html)
 - **Downloading FlightGear Scenery:**
-  - The process of adding a FlightGear map can be done by adding a
-    filename corresponding to the 
+  - Open http://ns334561.ip-5-196-65.eu/~fgscenery/WS2.0/scenery-2.0.1.html
+  - Hover the pointer over the grid in the map which you want to download
+  - Right click and copy the link
+  - Paste the link somewhere and copy the filename *.zip which is at the
+    end of the link
+  - Open [scenery_list.txt](scenes/scenery_list.txt) in your favourite text
+    editor and paste the filename at the end of the file.
+
+<p align="center"> 
+  <img src="scenery_install_instructions.gif">
+  <br>
+  FlightGear Scenery installation instructions
+</p>
+
 - Run
   ```bash
-  cd aircraft
-  ./install_aircrafts.sh
+  cd scenes
+  ./install_scenary.sh
   ```
-- Follow the steps and that should download and install the aircrafts.
 
 ## ChageLog
 * Bash scripts for downloading the aircrafts/sceneries added.
