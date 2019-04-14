@@ -67,10 +67,28 @@ tried to automate this process of installing Aircrafts and Sceneries.
   ./install_scenary.sh
   ```
 
-## ChageLog
-* Bash scripts for downloading the aircrafts/sceneries added.
-* Bash scripts for extracting and installing the aircrafts/sceneries added.
-* The scripts will only download the files if they have been updated in
-  the remote server.
-* Files will be extracted only if the file has not already been extracted or
-  the extracted file is outdated.
+## Getting Parallel with GNU Parallel
+Sometimes we might need to download and install a large number
+of aircrafts and scenery data, which takes a lot of time to
+download and unzip. These scripts can parallelise the process of
+downloading data and extracting the files by using
+[GNU Parallel](https://www.gnu.org/software/parallel/).
+On running the script, it will check if GNU parallel is installed,
+and if it is, it will use GNU Parallel, otherwise it will take
+the serial approach.
+
+### Installing GNU Parallel
+
+```bash
+wget http://mirror.rasanegar.com/gnu/parallel/parallel-latest.tar.bz2
+tar jxf parallel-latest.tar.bz2 --one-top-level=parallel-latest --strip-components=1
+cd parallel-latest
+./configure && make
+sudo make install
+parallel --version #check if parallel has been installed
+```
+
+> **Warning:** The scripts fail (with GNU Parallal installed)
+  if running behind a proxy server with a password which
+  contains special characters, in that case avoid using
+  GNU Parallel. Let me know if you have a solution.
