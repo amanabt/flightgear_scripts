@@ -1,2 +1,8 @@
-w080n40.zip
 w080n50.zip
+e050s50.zip
+e060s50.zip
+e070s50.zip
+e050s50.zip
+e050s60.zip
+e050s70.zip
+

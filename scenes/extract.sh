@@ -15,6 +15,7 @@ i=0
 if [ -z "${IS_PARALLEL[1]}" ]; then
     echo "GNU Parallel not found!"
     for filename in *.zip ; do
+        ProgressBar ${i} ${TOTAL_SCENERY} ${filename}
     	directory=${filename%.*}
         #echo "Directory: " $directory
         unzip -u -n -qq $filename -d $directory

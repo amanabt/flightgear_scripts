@@ -31,6 +31,7 @@ i=0
 if [ -z "${IS_PARALLEL[1]}" ]; then
     echo "GNU Parallel not found!"
     while read scenery_name; do
+            ProgressBar ${i} ${TOTAL_SCENERY} ${scenery_name}
             if ! [ -z $scenery_name ]; then
                     wget --quiet -N --proxy-user="$username" --proxy-passwd="$password" \
                             -e use_proxy=on -e http_proxy="$proxy" \

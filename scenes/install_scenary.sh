@@ -17,6 +17,7 @@ i=0
 sudo -v
 
 for dir in */ ; do
+    ProgressBar ${i} ${TOTAL_SCENERY} ${directory}
 	directory=${dir:0:-1}
 	#echo $directory
 

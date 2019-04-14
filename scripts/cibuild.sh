@@ -1,17 +1,24 @@
 #!/bin/bash
 
+export DEBIAN_FRONTEND=noninteractive
+
 ##############################
 # Testing without GNU Parallel
 ##############################
 pwd
 cd aircraft
 ./install_aircrafts.sh
+./clean.sh
+
 cd ..
 pwd
 cd scenes
 ./install_scenary.sh
+./clean.sh
 cd ..
 pwd
+rm -rfv aircraft/*zip
+rm -rfv scenes/*zip
 #######################
 
 
@@ -45,3 +52,5 @@ cd scenes
 cd ..
 pwd
 #######################
+
+unset DEBIAN_FRONTEND=noninteractive

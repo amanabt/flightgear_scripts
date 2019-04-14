@@ -15,6 +15,7 @@ i=0
 sudo -v
 
 for dir in */ ; do
+    ProgressBar ${i} ${TOTAL_AIRCRAFTS} ${directory}
 	directory=${dir:0:-1}
 	sudo rsync -rah $directory /usr/share/games/flightgear/Aircraft
     i=$((i + 1))

@@ -14,6 +14,7 @@ i=0
 
 if [ -z "${IS_PARALLEL[1]}" ]; then
     for filename in *.zip ; do
+        ProgressBar ${i} ${TOTAL_AIRCRAFT} ${filename}
     	yes | unzip -u -q $filename
         i=$((i + 1))
         ProgressBar ${i} ${TOTAL_AIRCRAFT} ${filename}

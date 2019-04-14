@@ -34,6 +34,7 @@ i=0
 if [ -z "${IS_PARALLEL[1]}" ]; then
     echo "GNU Parallel not found!"
     while read aircraft_name; do
+            ProgressBar ${i} ${TOTAL_AIRCRAFTS} ${aircraft_name}
             if ! [ -z $aircraft_name ]; then
                     wget --quiet -N --proxy-user="$username" --proxy-passwd="$password" \
                             -e use_proxy=on -e http_proxy="$proxy" \
