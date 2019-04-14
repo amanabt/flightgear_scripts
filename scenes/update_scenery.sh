@@ -21,7 +21,7 @@ if ! [ -z $proxy ]; then
         fi
 fi
 
-STR="$(whereis paralle)" # For checking if GNU Parallel is present
+STR="$(whereis parallel)" # For checking if GNU Parallel is present
 IFS=':' read -ra IS_PARALLEL <<< "$STR"    #Convert string to array
 
 STR="$(wc -l scenery_list.txt)" # Counts the number of scenery
