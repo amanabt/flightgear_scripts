@@ -39,10 +39,13 @@ if [ -z "${IS_PARALLEL[1]}" ]; then
             i=$((i + 1))
             ProgressBar ${i} ${TOTAL_SCENERY} ${scenery_name}
     done <scenery_list.txt
-
+    echo
+    echo
 else
     echo "Using GNU Parallel (Note: script breaks with passwords with special characters)"
     cat scenery_list.txt | parallel --bar -n 1 -I {} -j 8 " wget --quiet -N --proxy-user=$username --proxy-passwd=$password -e use_proxy=on -e http_proxy=$proxy http://ns334561.ip-5-196-65.eu/~fgscenery/WS2.0/'{}' "
 
+    echo
+    echo
 fi
 

@@ -20,3 +20,5 @@ for dir in */ ; do
     i=$((i + 1))
     ProgressBar ${i} ${TOTAL_AIRCRAFTS} ${directory}
 done
+echo
+echo

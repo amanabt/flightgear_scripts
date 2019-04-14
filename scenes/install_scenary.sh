@@ -38,3 +38,6 @@ for dir in */ ; do
     ProgressBar ${i} ${TOTAL_SCENERY} ${directory}
 
 done
+
+echo
+echo

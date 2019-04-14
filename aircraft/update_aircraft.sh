@@ -42,9 +42,13 @@ if [ -z "${IS_PARALLEL[1]}" ]; then
             i=$((i + 1))
             ProgressBar ${i} ${TOTAL_AIRCRAFTS} ${aircraft_name}
     done <aircraft_list.txt
+    echo
+    echo
 else
     echo "Using GNU Parallel (Note: script breaks with passwords with special characters)"
     cat aircraft_list.txt | parallel --bar -n 1 -I {} -j 8 " wget --quiet -N --proxy-user="$username" --proxy-passwd="$password" -e use_proxy=on -e http_proxy="$proxy" http://mirrors.ibiblio.org/flightgear/ftp/Aircraft/"{}""
 
+    echo
+    echo
 fi
 

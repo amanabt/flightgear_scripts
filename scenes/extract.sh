@@ -21,8 +21,11 @@ if [ -z "${IS_PARALLEL[1]}" ]; then
         i=$((i + 1))
         ProgressBar ${i} ${TOTAL_SCENERY} ${filename}
     done
-
+    echo
+    echo
 else
     cat scenery_list.txt | parallel --bar -n 1 -I {} -j 8 "unzip -u -n -qq {} -d {.}"
+    echo
+    echo
 fi
 

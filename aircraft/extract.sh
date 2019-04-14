@@ -18,9 +18,13 @@ if [ -z "${IS_PARALLEL[1]}" ]; then
         i=$((i + 1))
         ProgressBar ${i} ${TOTAL_AIRCRAFT} ${filename}
     done
+    echo
+    echo
 else
     echo "Using GNU Parallel (Note: script breaks with passwords with special characters)"
     cat aircraft_list.txt | parallel --bar -n 1 -I {} -j 8 "unzip -u -q {}"
+    echo
+    echo
 fi
 
 
